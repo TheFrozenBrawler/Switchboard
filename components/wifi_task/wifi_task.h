@@ -1,0 +1,6 @@
+#ifndef COMPONENTS_WIFI_TASK_WIFI_TASK_H_
+#define COMPONENTS_WIFI_TASK_WIFI_TASK_H_
+
+void wifi_task_init();
+
+#endif  // COMPONENTS_WIFI_TASK_WIFI_TASK_H_

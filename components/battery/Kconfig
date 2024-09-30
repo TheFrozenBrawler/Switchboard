@@ -1,0 +1,81 @@
+menu "Battery task config"
+    config BATTERY_TASK_STACK_SIZE
+        int "Battery task stack size"
+        default 4096
+        help
+            Set battery task stack size
+
+    config BATTERY_TASK_CORE
+        int "Battery task thread core"
+        default 1
+        help
+            Set battery task thread core
+endmenu
+
+menu "Battery config"
+    choice
+        bool "Choose battery type"
+        default BATTERY_3V3
+        config BATTERY_3V3
+            bool "Battery 3.3V"
+        config BATTERY_12V_1
+            bool "Battery 12V nb. 1"
+        config BATTERY_12V_2
+            bool "Battery 12V nb. 2"
+    endchoice
+
+    config BATTERY_LOGGER_EN
+        bool "Battery manager Logger enable"
+        default y if ENV_DEBUG
+        default n
+        help
+            Choose if show logs from Battery Task
+
+    config VOLTAGE_DIVIDER_R1
+        int "Voltage divider R1"
+        default 1000000
+        help
+            Voltage divider R1 value in Ohms
+
+    config VOLTAGE_DIVIDER_R2
+        int "Voltage divider R2"
+        default 249000
+        help
+            Voltage divider R2 value in Ohms
+
+    config BATTERY_TIMER_TIME
+        int "Measure timer callback time (seconds)"
+        default 5
+        help
+            Battery measure timer callback time in seconds
+
+    config BATTERY_MEASUREMENT_PIN
+        int "Battery measurement pin"
+        range 4 6
+        help
+            IO number of battery measurement pin
+            - 4 for 3V3
+            - 5 for 12V_1
+            - 6 for 12V_2
+endmenu
+
+menu "CPU temperature sensor config"
+    config CPU_TEMP_LOGGER_EN
+        bool "CPU temperature Logger enable"
+        default y if ENV_DEBUG
+        default n
+        help
+            Choose if show logs from CPU temperature component
+
+    config CPU_T_MIN
+        int "Minimal sensed CPU temperature (MANUAL)"
+        default(-10)
+        help
+            Check manual for correct value!
+
+    config CPU_T_MAX
+        int "Maximal sensed CPU temperature (MANUAL)"
+        default(80)
+        help
+            Check manual for correct value!
+endmenu

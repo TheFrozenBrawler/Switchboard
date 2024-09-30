@@ -1,0 +1,15 @@
+idf_component_register(
+    SRCS
+        "buzzer_handler.cpp"
+        "ui_task.cpp"
+        "led_handler.c"
+    INCLUDE_DIRS
+        "."
+    REQUIRES
+        event_manager
+        global
+        queue_types_manager
+    PRIV_REQUIRES
+        driver
+        logger
+)

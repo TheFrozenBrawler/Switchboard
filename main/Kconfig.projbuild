@@ -1,0 +1,22 @@
+menu "Switchboard configutation"
+    choice
+        bool "Select Environment"
+        default ENV_RELEASE
+
+        config ENV_RELEASE
+            bool "Release"
+
+        config ENV_DEBUG
+            bool "Debug"
+    endchoice
+
+    choice
+        bool "Select Switchboard number"
+
+        config  SWITCHBOARD_NB_1
+            bool "Switchboard number 1"
+
+        config  SWITCHBOARD_NB_2
+            bool "Switchboard number 2"
+    endchoice
+endmenu

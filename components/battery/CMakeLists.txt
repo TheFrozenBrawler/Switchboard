@@ -1,0 +1,17 @@
+idf_component_register(
+    SRCS
+        "battery_manager.c"
+        "battery_task.c"
+        "cpu_temp_sensor.c"
+    INCLUDE_DIRS
+        "."
+    REQUIRES
+        logger
+        global
+        event_manager
+        message_task
+        queue_types_manager
+    PRIV_REQUIRES
+        driver
+        esp_adc
+)

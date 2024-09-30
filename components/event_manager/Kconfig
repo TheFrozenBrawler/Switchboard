@@ -1,0 +1,8 @@
+menu "Event manager"
+    config EVENT_LOGGER_EN
+        bool "Event manager Logger enable"
+        default y if ENV_DEBUG
+        default n
+        help
+            Choose if show logs from Event Manager
+endmenu

@@ -1,0 +1,20 @@
+menu "Message task config"
+    config MESSAGE_LOGGER_EN
+        bool "Message Manager Logger enable"
+        default y if ENV_DEBUG
+        default n
+        help
+            Choose if show logs from Message Manager
+
+    config MESSAGE_TASK_STACK_SIZE
+        int "MESSAGE task stack size"
+        default 4096
+        help
+            Set message task stack size
+
+    config MESSAGE_TASK_CORE
+        int "Message task core"
+        default 1
+        help
+            Set message task core
+endmenu

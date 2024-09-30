@@ -1,0 +1,139 @@
+menu "WIFI task config"
+    config WIFI_TASK_STACK_SIZE
+        int "WIFI task stack size"
+        default 6144
+        help
+            Set WiFi task stack size
+
+    config WIFI_TASK_CORE
+        int "WiFi task core"
+        default 0
+        help
+            Set WiFi task thread core
+endmenu
+
+menu "WiFi config"
+    choice
+        bool "select WiFi mode"
+        default WIFI_RELEASE
+        config WIFI_RELEASE
+            bool "WiFi Release"
+        config WIFI_DEBUG
+            bool "WiFi Debug"
+    endchoice
+
+    config WIFI_LOGGER_EN
+        bool "Wifi Task Logger enable"
+        default y if ENV_DEBUG
+        default n
+        help
+            Choose if show logs from Wifi Task
+
+    menu "NTP config"
+        config NTP_SERVER_ADDR
+            string "Set NTP server address"
+            default ""
+            help
+                Set NTP server addres i get NTP time
+
+        config NTP_TIME_ZONE
+            string  "Set NTP Time Zone (leave UTC [GMT])"
+            default "GMT"
+            help
+                Set NTP Time Zone - leave default GMT
+
+        config NTP_CONNECT_TIMEOUT_MS
+            int "Set NTP connect timeout (MS)"
+            default 1000
+            help
+                Set NTP Connect timeout in milliseconds
+    endmenu
+
+    menu "Release WiFi config"
+        depends on WIFI_RELEASE
+
+        config WIFI_RELEASE_SSID
+            string "Release WiFi SSID"
+            default ""
+            help
+                Set release network SSID
+
+        config WIFI_RELEASE_PASSWORD
+            string "Release WiFi password"
+            default ""
+            help
+                Set release network password
+
+        config WIFI_RELEASE_GATEWAY
+            string "Release gateway"
+            default ""
+            help
+                Set release network gateway
+
+        config WIFI_RELEASE_SUBNET_MASK
+            string "Release subnet mask"
+            default ""
+            help
+                Set release network subnet mask
+
+        config WIFI_RELEASE_IP
+            depends on SWITCHBOARD_NB_1
+            string "Release static ip"
+            default ""
+            help
+                Set device static IP
+
+        config WIFI_RELEASE_IP
+            depends on SWITCHBOARD_NB_2
+            string "Release static ip"
+            default ""
+            help
+                Set device static IP
+
+    endmenu
+
+    menu "Debug WiFi config"
+        depends on WIFI_DEBUG
+
+        config WIFI_DEBUG_SSID
+            string "Debug WiFi SSID"
+            default ""
+            help
+                Set debug network SSID
+
+        config WIFI_DEBUG_PASSWORD
+            string "Debug WiFi password"
+            default ""
+            help
+                Set debug network password
+
+        config WIFI_DEBUG_GATEWAY
+            string "Debug gateway"
+            default ""
+            help
+                Set debug network gateway
+
+        config WIFI_DEBUG_SUBNET_MASK
+            string "Debug subnet mask"
+            default ""
+            help
+                Set debug network subnet mask
+
+        config WIFI_DEBUG_IP
+            depends on SWITCHBOARD_NB_1
+            string "Debug static ip"
+            default ""
+            help
+                Set device static IP
+
+        config WIFI_DEBUG_IP
+            depends on SWITCHBOARD_NB_2
+            string "Debug static ip"
+            default ""
+            help
+                Set device static IP
+
+    endmenu
+
+
+endmenu

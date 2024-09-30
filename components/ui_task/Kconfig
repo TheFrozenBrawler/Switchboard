@@ -1,0 +1,84 @@
+menu "UI task config"
+    config UI_TASK_STACK_SIZE
+        int "UI task stack size"
+        default 4096
+        help
+            Set UI task stack size
+
+    config UI_TASK_CORE
+        int "UI task thread core"
+        default 1
+        help
+            Set UI task thread core
+endmenu
+
+menu "UI config"
+    config UI_LOGGER_EN
+        bool "UI Task Logger enable"
+        default y if ENV_DEBUG
+        default n
+        help
+            Choose if show logs from UI task
+
+
+    config BUZZER_PERIOD
+        int "Buzzer default period timeout"
+        default 1000
+        help
+            Set buzzer default period timeout
+
+    config BUZZER_DUTY
+        int "Buzzer default duty timeout"
+        default 200
+        help
+            Set buzzer default duty timeout
+
+
+    config BUZZER_SIGNAL_FAILURE_PERIOD
+        int "Buzzer default period timeout"
+        default 1500
+        help
+            Set buzzer default period timeout
+
+    config BUZZER_SIGNAL_FAILURE_DUTY
+        int "Buzzer default duty timeout"
+        default 1000
+        help
+            Set buzzer default duty timeout
+
+
+    config LED_STRIP_PIN
+        int "LED strip pin"
+        default 7
+        help
+            Set LED strip pin
+
+    menu "LED ON color"
+        config ON_COLOR_RED
+            int "LED strip ready color R"
+            default 0
+
+        config ON_COLOR_GREEN
+            int "LED strip ready color G"
+            default 155
+
+        config ON_COLOR_BLUE
+            int "LED strip ready color B"
+            default 0
+    endmenu
+
+    menu "LED OFF color"
+        config OFF_COLOR_RED
+            int "LED strip ready color R"
+            default 255
+
+        config OFF_COLOR_GREEN
+            int "LED strip ready color G"
+            default 0
+
+        config OFF_COLOR_BLUE
+            int "LED strip ready color B"
+            default 0
+    endmenu
+
+endmenu

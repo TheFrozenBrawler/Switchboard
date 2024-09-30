@@ -1,0 +1,20 @@
+menu "Common config"
+    config PRIORITY_LOW
+        int "PRIORITY_LOW level config"
+        default 1
+        help
+            Set PRIORITY_LOW level
+
+    config PRIORITY_NORMAL
+        int "PRIORITY_NORMAL level config"
+        default 2
+        help
+            Set PRIORITY_NORMAL level
+
+    config PRIORITY_HIGH
+        int "PRIORITY_HIGH level config"
+        default 3
+        help
+            Set PRIORITY_HIGH level
+
+endmenu

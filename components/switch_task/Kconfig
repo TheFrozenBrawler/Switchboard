@@ -1,0 +1,138 @@
+menu "Switch task config"
+    config SWITCH_TASK_STACK_SIZE
+        int "SWITCH task stack size"
+        default 4096
+        help
+            Set switch task stack size
+
+    config SWITCH_TASK_CORE
+        int "MQTT task thread core"
+        default 1
+        help
+            Set switch task thread core
+endmenu
+
+menu "Switch config"
+    config SWITCH_LOGGER_EN
+        bool "Switch Task Logger enable"
+        default y if ENV_DEBUG
+        default n
+        help
+            Choose if show logs from Switch Task
+
+    config DEBOUNCING_TIME
+        int "Switch debouncing time in miliseconds"
+        default 50
+        help
+            Set switch debouncing time in miliseconds
+endmenu
+
+menu "Switches MQTT & LED bit config"
+    config SWITCH_0_MQTT_BIT
+        int "Switch 0 MQTT bit"
+        default 10
+
+    config SWITCH_0_LED_BIT
+        int "Switch 0 LED bit"
+        default 10
+
+
+    config SWITCH_1_MQTT_BIT
+        int "Switch 1 MQTT bit"
+        default 11
+
+    config SWITCH_1_LED_BIT
+        int "Switch 1 LED bit"
+        default 11
+
+
+    config SWITCH_2_MQTT_BIT
+        int "Switch 2 MQTT bit"
+        default 8
+
+    config SWITCH_2_LED_BIT
+        int "Switch 2 LED bit"
+        default 8
+
+
+    config SWITCH_3_MQTT_BIT
+        int "Switch 3 MQTT bit"
+        default 9
+
+    config SWITCH_3_LED_BIT
+        int "Switch 3 LED bit"
+        default 9
+
+
+    config SWITCH_4_MQTT_BIT
+        int "Switch 4 MQTT bit"
+        default 6
+
+    config SWITCH_4_LED_BIT
+        int "Switch 4 LED bit"
+        default 6
+
+
+    config SWITCH_5_MQTT_BIT
+        int "Switch 5 MQTT bit"
+        default 7
+
+    config SWITCH_5_LED_BIT
+        int "Switch 5 LED bit"
+        default 7
+
+
+    config SWITCH_6_MQTT_BIT
+        int "Switch 6 MQTT bit"
+        default 2
+
+    config SWITCH_6_LED_BIT
+        int "Switch 6 LED bit"
+        default 2
+
+
+    config SWITCH_7_MQTT_BIT
+        int "Switch 7 MQTT bit"
+        default 3
+
+    config SWITCH_7_LED_BIT
+        int "Switch 7 LED bit"
+        default 3
+
+
+    config SWITCH_8_MQTT_BIT
+        int "Switch 8 MQTT bit"
+        default 5
+
+    config SWITCH_8_LED_BIT
+        int "Switch 8 LED bit"
+        default 5
+
+
+    config SWITCH_9_MQTT_BIT
+        int "Switch 9 MQTT bit"
+        default 4
+
+    config SWITCH_9_LED_BIT
+        int "Switch 9 LED bit"
+        default 4
+
+
+    config SWITCH_10_MQTT_BIT
+        int "Switch 10 MQTT bit"
+        default 1
+
+    config SWITCH_10_LED_BIT
+        int "Switch 10 LED bit"
+        default 1
+
+
+    config SWITCH_11_MQTT_BIT
+        int "Switch 11 MQTT bit"
+        default 0
+
+    config SWITCH_11_LED_BIT
+        int "Switch 11 LED bit"
+        default 0
+
+endmenu

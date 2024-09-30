@@ -1,0 +1,6 @@
+#ifndef COMPONENTS_MQTT_TASK_MQTT_TASK_H_
+#define COMPONENTS_MQTT_TASK_MQTT_TASK_H_
+
+void mqtt_task_init();
+
+#endif  // COMPONENTS_MQTT_TASK_MQTT_TASK_H_

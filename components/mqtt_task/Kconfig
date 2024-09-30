@@ -1,0 +1,116 @@
+menu "MQTT task config"
+    config MQTT_TASK_STACK_SIZE
+        int "MQTT task stack size"
+        default 4096
+        help
+            Set MQTT task stack size
+
+    config MQTT_TASK_CORE
+        int "MQTT task thread core"
+        default 0
+        help
+            Set MQTT task thread core
+endmenu
+
+menu "MQTT config"
+    choice
+        bool "Select MQTT mode"
+        default MQTT_RELEASE
+        config MQTT_RELEASE
+            bool "MQTT release"
+        config MQTT_DEBUG
+            bool "MQTT debug"
+    endchoice
+
+    config MQTT_LOGGER_EN
+        bool "MQTT Task Logger enable"
+        default y if ENV_DEBUG
+        default n
+        help
+            Choose if show logs from MQTT Task
+
+    menu "Release MQTT config"
+        depends on MQTT_RELEASE
+
+        config MQTT_RELEASE_SERVER_IP
+            string "MQTT release server IP"
+            default ""
+            help
+                Set MQTT release server IP
+
+        config MQTT_RELEASE_CLIEND_ID
+            depends on SWITCHBOARD_NB_1
+            string "MQTT release client ID"
+            default "switchboard-1"
+            help
+                set MQTT release client ID
+
+        config MQTT_RELEASE_CLIEND_ID
+            depends on SWITCHBOARD_NB_2
+            string "MQTT release client ID"
+            default "switchboard-2"
+            help
+                set MQTT release client ID
+
+        config MQTT_RELEASE_PORT
+            string "MQTT release port"
+            default "1883"
+            help
+                set MQTT release server port
+
+        config MQTT_RELEASE_TOPIC
+            string "MQTT release topic"
+            default "SwitchBoardMsgOut"
+            help
+                set MQTT release topic
+
+        config MQTT_RELEASE_RECON_TIMEOUT
+            int "MQTT release reconnection timeout in miliseconds"
+            default 1000
+            help
+                set MQTT reconnection timeout in miliseconds
+    endmenu
+
+    menu "Debug MQTT config"
+        depends on MQTT_DEBUG
+
+        config MQTT_DEBUG_SERVER_IP
+            string "MQTT debug server IP"
+            default ""
+            help
+                Set MQTT debug server IP
+
+        config MQTT_DEBUG_CLIEND_ID
+            depends on SWITCHBOARD_NB_1
+            string "MQTT debug client ID"
+            default "switchboard-1"
+            help
+                Set MQTT debug client ID
+
+        config MQTT_DEBUG_CLIEND_ID
+            depends on SWITCHBOARD_NB_2
+            string "MQTT debug client ID"
+            default "switchboard-2"
+            help
+                set MQTT debug client ID
+
+        config MQTT_DEBUG_PORT
+            string "MQTT debug port"
+            default "1883"
+            help
+                set MQTT debug server port
+
+        config MQTT_DEBUG_TOPIC
+            string "MQTT debug topic"
+            default "SwitchBoardMsgOut"
+            help
+                set MQTT debug topic
+
+        config MQTT_DEBUG_RECON_TIMEOUT
+            int "MQTT debug reconnection timeout in miliseconds"
+            default 1000
+            help
+                set MQTT reconnection timeout in miliseconds
+
+    endmenu
+endmenu
