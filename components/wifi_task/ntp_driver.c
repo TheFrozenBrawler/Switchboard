@@ -19,7 +19,11 @@ DECLARE_LOG(NTP DRIVER)
 #endif
 
 static SemaphoreHandle_t ntp_semaphore;
+static StaticSemaphore_t ntp_semaphore_buffer;
+
 static TimerHandle_t ntp_timer_handler;
+static StaticTimer_t ntp_timer_buffer;
+
 static bool ntp_running = false;
 
 static void time_sync_cb(struct timeval *tv) {
@@ -47,9 +51,13 @@ void ntp_connect_timer_cb(TimerHandle_t timer) {
 }
 
 esp_err_t ntp_driver_init() {
-    ntp_semaphore     = xSemaphoreCreateBinary();
-    ntp_timer_handler = xTimerCreate(
-      "NTP Timer", pdMS_TO_TICKS(CONFIG_NTP_CONNECT_TIMEOUT_MS), pdFALSE, (void *)0, ntp_connect_timer_cb);
+    ntp_semaphore     = xSemaphoreCreateBinaryStatic(&ntp_semaphore_buffer);
+    ntp_timer_handler = xTimerCreateStatic("NTP Timer",
+                                           pdMS_TO_TICKS(CONFIG_NTP_CONNECT_TIMEOUT_MS),
+                                           pdFALSE,
+                                           (void *)0,
+                                           ntp_connect_timer_cb,
+                                           &ntp_timer_buffer);
 
     if ((ntp_semaphore == NULL) || (ntp_timer_handler == NULL)) {
         LOG_E(TAG, "NTP semaphore or timer wasn't initialized properly");
